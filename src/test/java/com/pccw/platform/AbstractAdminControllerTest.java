@@ -1,6 +1,8 @@
 /** */
 package com.pccw.platform;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pccw.platform.service.sdk.rbac.model.RbacProperties;
@@ -9,10 +11,8 @@ import com.pccw.platform.service.sdk.rbac.utils.JwtToolkit;
 import com.pccw.platform.service.utils.MessageService;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-
 import lombok.SneakyThrows;
 import org.apache.commons.io.IOUtils;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +25,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import javax.validation.constraints.AssertTrue;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class AbstractAdminControllerTest {
   protected String token;
@@ -69,20 +65,20 @@ public class AbstractAdminControllerTest {
 
   public void mvcGet(MockMvc mockMvc, String url) throws Exception {
     mockMvc
-            .perform(
-                    MockMvcRequestBuilders.get(url)
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .header("Authorization", token)
-                            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andDo(MockMvcResultHandlers.print())
-            .andReturn();
+        .perform(
+            MockMvcRequestBuilders.get(url)
+                .contentType(MediaType.APPLICATION_JSON)
+                .header("Authorization", token)
+                .accept(MediaType.APPLICATION_JSON))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andDo(MockMvcResultHandlers.print())
+        .andReturn();
   }
 
   @Test
   @SneakyThrows
   void test() {
-    String s ="";
+    String s = "";
     assertNotNull(s);
   }
 }

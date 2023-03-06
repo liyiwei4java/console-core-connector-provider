@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Builder
 public class Location extends Entity {
-    private String id;
-    private String code;
-    private String name;
+  private String id;
+  private String code;
+  private String name;
 }

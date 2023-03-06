@@ -9,13 +9,12 @@ import org.springframework.context.annotation.Configuration;
 @Data
 @Slf4j
 public class EunetworksConfig {
-    @Value("${eunetworks.url}")
-    private String url;
+  @Value("${eunetworks.url}")
+  private String url;
 
-    @Value("${eunetworks.username}")
-    private String username;
+  @Value("${eunetworks.username}")
+  private String username;
 
-    @Value("${eunetworks.password}")
-    private String password;
-
+  @Value("${eunetworks.password}")
+  private String password;
 }

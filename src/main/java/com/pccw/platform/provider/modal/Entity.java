@@ -5,6 +5,4 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Entity {
-
-}
+public class Entity {}

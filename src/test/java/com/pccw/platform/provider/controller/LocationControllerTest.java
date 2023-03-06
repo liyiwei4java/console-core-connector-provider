@@ -7,28 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 
 class LocationControllerTest extends AbstractAdminControllerTest {
-    @Autowired
-    private MockMvc mockMvc;
+  @Autowired private MockMvc mockMvc;
 
-    @Test
-    @SneakyThrows
-    void list() {
-        mvcGet(
-                mockMvc,
-                "/location/eunetworks/locations");
-        mvcGet(
-                mockMvc,
-                "/location/colt/locations");
-    }
+  @Test
+  @SneakyThrows
+  void list() {
+    mvcGet(mockMvc, "/location/eunetworks/locations");
+    mvcGet(mockMvc, "/location/colt/locations");
+  }
 
-    @Test
-    @SneakyThrows
-    void get() {
-        mvcGet(
-                mockMvc,
-                "/location/eunetworks/locations/a062500000E0fBUAAZ");
-    }
-
-
-
+  @Test
+  @SneakyThrows
+  void get() {
+    mvcGet(mockMvc, "/location/eunetworks/locations/a062500000E0fBUAAZ");
+  }
 }
