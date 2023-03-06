@@ -1,0 +1,77 @@
+spring:
+  application:
+    name: connector-provider
+  datasource:
+    driverClassName: org.postgresql.Driver
+    password: password
+    url: jdbc:postgresql://localhost:5432/platform
+    username: postgresql
+    hikari:
+      pool-name: hikari-platform-service-platform
+      connection-test-query: SELECT 1
+      maximum-pool-size: 10
+      max-lifetime: 600000
+  flyway:
+    baseline-on-migrate: true
+    enabled: false
+    placeholder-replacement: false
+    validate-on-migrate: false
+
+mybatis:
+  mapper-locations: classpath*:com/pccw/plateform/**/xml/*Mapper.xml
+
+mybatis-plus:
+  configuration:
+    mapUnderscoreToCamelCase: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-handlers-package: com.pccw.platform.common.handler
+
+server:
+  port: 8080
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    jmx:
+      exposure:
+        include: health,info,prometheus
+    web:
+      base-path: /admin
+      exposure:
+        include: health,info,prometheus
+  info:
+    git:
+      mode: full
+
+app:
+  auth:
+    rbac:
+      enabled: true
+      jwt:
+        secret: 123456
+  core:
+    plugin:
+      enabled: false
+    backend:
+      url: dev.core.consoleconnect.com
+      url2: dev.consolecore.io
+      token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTA1OWQxMC02ODczLTRiMzItYjQyZS02MWM2NWVjMjY0YTUiLCJhdWQiOm51bGwsImlzcyI6IkRldiBDb25zb2xlIENvcmUiLCJ0b2tlblR5cGUiOiJBUEkiLCJleHAiOjE2ODg2MjczMzgsImlhdCI6MTY2MjcwNzMzOCwianRpIjoiNzVjYTU1YTMtNjk2YS00NGU5LWJhNjQtNTk3ZTJhY2NlYzhkIiwidGVuYW50IjoiQUdFTlQifQ.eIrqFRmsrIE4TlLCFaphPu_4On_eosmKUxVFMYWXtPc
+      env: LOCAL
+
+logging:
+  level:
+    com.pccw.platform.system: DEBUG
+
+eunetworks:
+  url: ${EUNETWORKS_URL:https://api.preprod.connected.eunetworks.com/api/v1/}
+  username: ${EUNETWORKS_USERNAME:integration.user@gatewayglobal.com.connected}
+  password: ${EUNETWORKS_PASSWORD:b#7XT5^Amq9p}
+
+
+
